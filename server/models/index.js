@@ -1,6 +1,7 @@
 var db = require('../db');
 var mysql = require('mysql');
 
+
 module.exports = {
   messages: {
     get: function () {
@@ -39,8 +40,17 @@ module.exports = {
       }); 
     },
     post: function (user) {
-      console.log('LEVEL 2 - Made it into model.post-------- user is: ', user);
-      db.query(`INSERT INTO users (name) VALUES ('${user.username}');`);
+      console.log('Made it into model.post-------- user is: ', user);
+      db.query(`INSERT INTO users (name) VALUES ('${user.username}');`, function () {
+        
+        db.query('SELECT * FROM users', function(err, data) {
+          if (err) {
+            console.log(err);
+          }
+          console.log(data);
+        }); 
+        
+      });
 
     }
   }
