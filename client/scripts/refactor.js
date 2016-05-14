@@ -22,7 +22,7 @@
 
 app = {
 
-  server: 'localhost:3000/classes/messages/',
+  server: 'http://localhost:3000/classes/messages/',
 
   init: function() {
     // Get username
@@ -76,7 +76,6 @@ app = {
   loadMsgs: function() {
     $.ajax({
       url: app.server,
-      data: { order: '-createdAt' },
       contentType: 'application/json',
       success: function(json) {
         app.displayMessages(json.results);
@@ -95,8 +94,8 @@ app = {
       data: JSON.stringify(message),
       contentType: 'application/json',
       success: function(json) {
-        message.objectId = json.objectId;
-        app.displayMessage(message);
+        // message.objectId = json.objectId;
+        // app.displayMessage(message);
       },
       complete: function() {
         app.stopSpinner();
@@ -121,7 +120,7 @@ app = {
 /////////////////////////////////////////////////////////////////////////////
 
 var Message = Backbone.Model.extend({
-  url: 'https://api.parse.com/1/classes/messages/',
+  url: 'http://localhost:3000/classes/messages/',
   defaults: {
     username: '',
     text: ''
@@ -131,10 +130,10 @@ var Message = Backbone.Model.extend({
 var Messages = Backbone.Collection.extend({
 
   model: Message,
-  url: 'https://api.parse.com/1/classes/messages/',
+  url: 'http://localhost:3000/classes/messages/',
 
   loadMsgs: function() {
-    this.fetch({data: { order: '-createdAt' }});
+    this.fetch();
   },
 
   parse: function(response, options) {

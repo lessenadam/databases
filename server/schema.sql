@@ -43,6 +43,7 @@ To start:
  - mysql -u root -p < server/schema.sql (create schema)
  - mysql -u root -p (confirm shcema creation)
  - nodemon npm start
+ - bower install
 
 
 
