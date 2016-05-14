@@ -3,11 +3,17 @@ CREATE DATABASE chat;
 USE chat;
 
 CREATE TABLE messages (
-  /* Describe your table here.*/
+  id
 );
 
 /* Create other tables and define schemas for them here! */
+CREATE TABLE rooms (
 
+);
+
+CREATE TABLE users (
+
+); 
 
 
 
