@@ -1,19 +1,33 @@
-CREATE DATABASE chat;
+-- CREATE DATABASE cb;
 
-USE chat;
+USE cb;
 
-CREATE TABLE messages (
-  id
+CREATE TABLE rooms 
+(
+  id int auto_increment, 
+  name varchar (140),
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE users 
+(
+  id int auto_increment, 
+  name varchar (140),
+  PRIMARY KEY (id)
+); 
+
+CREATE TABLE messages 
+(
+  id int auto_increment, 
+  u_id int,
+  r_id int,
+  msg varchar (140),
+  PRIMARY KEY (id),
+  FOREIGN KEY (u_id) REFERENCES users(id),
+  FOREIGN KEY (r_id) REFERENCES rooms(id)
 );
 
 /* Create other tables and define schemas for them here! */
-CREATE TABLE rooms (
-
-);
-
-CREATE TABLE users (
-
-); 
 
 
 
