@@ -22,7 +22,7 @@
 
 app = {
 
-  server: 'localhost:3000/messages/',
+  server: 'localhost:3000/classes/messages/',
 
   init: function() {
     // Get username
