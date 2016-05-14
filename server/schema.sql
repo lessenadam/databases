@@ -1,4 +1,4 @@
--- CREATE DATABASE cb;
+CREATE DATABASE cb;
 
 USE cb;
 
@@ -35,3 +35,22 @@ CREATE TABLE messages
  *    mysql -u root < server/schema.sql
  *  to create the database and the tables.*/
 
+/* 
+To start: 
+ - npm install
+ - mysql.server start 
+ - mysqladmin -u root password (create root user and password)
+ - mysql -u root -p < server/schema.sql (create schema)
+ - mysql -u root -p (confirm shcema creation)
+ - nodemon npm start
+
+
+
+
+
+
+
+
+
+
+*/
