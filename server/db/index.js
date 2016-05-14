@@ -15,22 +15,43 @@ connection.connect(function(err) {
   }
   console.log('connected success');
 });
+// connection.query('INSERT INTO users (name) VALUES ("hi")', function(err, data) {
+//   if (err) {
+//     console.log(err);
+//   }
+//   console.log('successfully inserted data');
+//   console.log(data);
+//   connection.query('select name from users', function(err, data) {
+//     if (err) {
+//       console.log(err);
+//     }
+//     console.log('successfully pulled data');
+//     console.log(data);
+//   });
+// });
 
 
-connection.end(function (err) {
-  // body...
-  console.log('successfully ended connection');
-});
+// connection.end(function (err) {
+//   // body...
+//   console.log('successfully ended connection');
+// });
 // exports.connection; 
 
-// var query = function(queryString, callback) {
-//   connection.connect();
-//   // connection.query(queryString, function(err, data) {
-//     // callback(err, data);
-//   connection.end();
-//   });  
+var query = function(queryString, callback) {
+  console.log('Inside the query function');
+  console.log('query is', queryString);
+  // connection.query(queryString, callback(err, data));  
+  connection.query(queryString, callback); 
+};
 
+// query('string here', function(err, data) {
+//   // if err
+//     // log
+//   // do something with data
+//   query('other string here maybe with subset of data', function(err, data) {
 
+//   })
+// })
 
 // module.exports = connection;
 
@@ -39,5 +60,5 @@ connection.end(function (err) {
 // You will need to connect with the user "root", no password,
 // and to the database "chat".
 
-// exports.query = query;
+exports.query = query;
 

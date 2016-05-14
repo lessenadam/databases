@@ -3,23 +3,20 @@ var models = require('../models');
 module.exports = {
   messages: {
     get: function (req, res) {
-      console.log(req);
-      var messages = models.messages.get(); 
-      res.writeHead(200, {'Content-Type':'application/json'});
-      res.end(messages);
+      var messages = models.messages.get(function(body) {
+        console.log('MESSAGES FROM MODELS IS RETURNING----------', body);
+        res.writeHead(200, {'Content-Type':'application/json'});
+        res.end(body); 
+      }); 
+      // res.end(messages);
     }, // a function which handles a get request for all messages
     post: function (req, res) {
       req.body;
-      var body = ''; 
-      req.on('data', function(err, data) {
-        body += data; 
-      }).on('end', function() {
-        models.messages.post(JSON.parse(body));
+      models.messages.post(req.body);
         // if waiting for promise
         // when getting response, write res, and said res
-        res.writeHead(200);
-        res.end();
-      });
+      res.writeHead(200);
+      res.end();
      // a function which handles posting a message to the database
     }
   },
