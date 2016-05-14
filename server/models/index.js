@@ -42,14 +42,13 @@ module.exports = {
           }); 
         } else {
           console.log(userId); 
-          db.query(`INSERT INTO messages (u_id, msg) VALUES (${userId[0].id},'${message.message}');`);
+          db.query(`INSERT INTO messages (u_id, msg) VALUES (${userId[0].id},'${message.text}');`);
         }
       });
     } // a function which can be used to insert a message into the database
   },
 
   users: {
-    // Ditto as above.
     get: function () {
       return allUsers = db.query(`SELECT name FROM users`, function (err, data) {
         if (err) {
@@ -75,7 +74,6 @@ module.exports = {
           callback(err, data);
         }
       });
-
     }
   }
 };
